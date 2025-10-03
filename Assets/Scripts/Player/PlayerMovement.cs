@@ -10,9 +10,11 @@ public class PlayerMovement : MonoBehaviour
     [HideInInspector] public Rigidbody2D rb;
     [HideInInspector] public bool dontMove = false;
     private Vector2 _moveInput;
+    [HideInInspector] public bool facingRight;
 
     void Awake()
     {
+        facingRight = true;
         rb = GetComponent<Rigidbody2D>();
     }
 
@@ -39,14 +41,16 @@ public class PlayerMovement : MonoBehaviour
         _playerAnimator.SetFloat("Speed", _moveInput.sqrMagnitude);
 
 
-        if (moveX < 0)
+        if (moveX < 0 && facingRight)
         {
             transform.localScale = new Vector3(-0.2f, 0.2f, 0.2f);
+            facingRight = false;
         }
 
-        else if (moveX > 0)
+        else if (moveX > 0 && !facingRight)
         {
             transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
+            facingRight = true;
         }
     }
 

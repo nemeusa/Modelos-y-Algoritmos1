@@ -4,16 +4,10 @@ public class BulletBark : Barking
 {
     [SerializeField] float _duration;
     [SerializeField] float _speed;
-    [SerializeField] Transform _firePoint;
-
-    Rigidbody2D _rb;
+    [SerializeField] int _damage;
+    [SerializeField] LayerMask _layerMask;
 
     float _counter;
-
-    private void Awake()
-    {
-        _rb = GetComponent<Rigidbody2D>();
-    }
 
     private void Update()
     {
@@ -22,6 +16,18 @@ public class BulletBark : Barking
 
         if (_counter >= _duration)
             _myPool.Release(this);
+    }
+
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        var target = other.GetComponent<IDamageable>();
+        if (target != null && ((_layerMask.value & (1 << other.gameObject.layer)) != 0))
+        {
+            target.TakeDamage(_damage);
+            Vector2 direction = (other.transform.position - transform.position).normalized;
+            target.Reboud(direction);
+            _myPool.Release(this);
+        }
     }
 
     public override void Refresh()

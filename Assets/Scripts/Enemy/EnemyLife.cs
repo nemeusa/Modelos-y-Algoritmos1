@@ -43,7 +43,7 @@ public class EnemyLife : MonoBehaviour, IDamageable
     {
         if (_life > 0)
         {
-            _enemy.rb.velocity = new Vector2(ReboundSpeed.x * HitPoint.x, ReboundSpeed.y);
+            if (_enemy.rb != null) _enemy.rb.velocity = new Vector2(ReboundSpeed.x * HitPoint.x, ReboundSpeed.y);
             StartCoroutine(ControlLose());
             StartCoroutine(Invincible());
         }

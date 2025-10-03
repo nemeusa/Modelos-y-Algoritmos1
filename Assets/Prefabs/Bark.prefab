@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 3560714505830716003}
   - component: {fileID: 6072349554431313976}
   - component: {fileID: 7895474445425427435}
-  - component: {fileID: 7588013039358598927}
+  - component: {fileID: -1559659038977651209}
   m_Layer: 3
-  m_Name: Bullet bark
+  m_Name: Bark
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -250,7 +250,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &7588013039358598927
+--- !u!114 &-1559659038977651209
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -259,12 +259,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 7908224994655600016}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 84423b1f1c6732440b574049d9924df7, type: 3}
+  m_Script: {fileID: 11500000, guid: 4a0dfd8d027f6fe429248b939c23cf23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _duration: 4
-  _speed: 10
-  _damage: 5
+  _duration: 0.2
+  _damage: 10
   _layerMask:
     serializedVersion: 2
     m_Bits: 64

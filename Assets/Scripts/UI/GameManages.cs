@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject _defeatedMenu, _winMenu, _store;
     [SerializeField] GameObject _pauseUI;
     [SerializeField] UISoundEffects _UISounds;
+    public PlayerMovement player;
     private bool _altBool;
     private bool _isPause;
 
