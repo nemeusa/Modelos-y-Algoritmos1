@@ -18,8 +18,11 @@ public class PlayerLife : MonoBehaviour, IDamageable, IObservable
 
     List<IObserver> _observers = new List<IObserver>();
 
+    Model _model;
+
     private void Awake()
     {
+        _model = new CharacterModel().SetMaxLife(_maxLife);
         _player = GetComponent<PlayerMovement>();
         _life = _maxLife;
     }
@@ -28,19 +31,7 @@ public class PlayerLife : MonoBehaviour, IDamageable, IObservable
     {
         if (!_animator.GetBool("Hit"))
         {
-            _life -= damage;
-            Debug.Log("you are " + _life + " from life");
-            Debug.Log("you get " + damage + " from damage");
-            foreach (var ob in _observers)
-                ob.UpdateLife(_life, _maxLife);
-
-
-            if (_life <= 0)
-            {
-                Debug.Log("Moriste :(");
-                Destroy(this.gameObject);
-                GameManager.instance.DefeatedMenu();
-            }
+            _model.TakeDamage(damage, _observers);
         }
     }
 

@@ -10,7 +10,6 @@ public class AttackArea : MonoBehaviour
     private void OnTriggerStay2D (Collider2D other)
     {
         var target = other.GetComponent<IDamageable>();
-        var house = other.GetComponent<MiaiusHouse>();
 
         if (target != null && ((_layerMask.value & (1 << other.gameObject.layer)) != 0))
         {
@@ -19,7 +18,5 @@ public class AttackArea : MonoBehaviour
             Vector2 direction = (other.transform.position - transform.position).normalized;
             target.Reboud(direction);
         }
-
-        if (((_layerMask.value & (1 << other.gameObject.layer)) != 0) && house != null) house.Die();
     }
 }
