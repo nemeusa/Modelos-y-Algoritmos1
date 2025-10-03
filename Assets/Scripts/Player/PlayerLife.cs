@@ -1,13 +1,13 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerLife : MonoBehaviour, IDamageable
+public class PlayerLife : MonoBehaviour, IDamageable, IObservable
 {
     [Header("Life")]
     [SerializeField] private float _maxLife;
     [SerializeField] private float _life;
-    [SerializeField] LifeBar barLife;
-    PlayerSoundEffects playerSFX;
+
 
     [Header("Hit")]
     private float _lastDamage;
@@ -16,12 +16,12 @@ public class PlayerLife : MonoBehaviour, IDamageable
     PlayerMovement _player;
     [SerializeField] Vector2 _reboundSpeed;
 
-    private void Start()
+    List<IObserver> _observers = new List<IObserver>();
+
+    private void Awake()
     {
         _player = GetComponent<PlayerMovement>();
-        playerSFX = GetComponent<PlayerSoundEffects>();
         _life = _maxLife;
-        barLife._BarLife(_life);
     }
 
     public void TakeDamage(float damage)
@@ -29,11 +29,10 @@ public class PlayerLife : MonoBehaviour, IDamageable
         if (!_animator.GetBool("Hit"))
         {
             _life -= damage;
-            barLife.actuallyLife(_life);
             Debug.Log("you are " + _life + " from life");
             Debug.Log("you get " + damage + " from damage");
-            playerSFX.PlayDamageSound();
-
+            foreach (var ob in _observers)
+                ob.UpdateLife(_life, _maxLife);
 
 
             if (_life <= 0)
@@ -68,4 +67,14 @@ public class PlayerLife : MonoBehaviour, IDamageable
         _player.dontMove = false;
     }
 
+    public void Subscribe(IObserver obs)
+    {
+        if (!_observers.Contains(obs))
+            _observers.Add(obs); 
+    } 
+    public void Unsubscribe(IObserver obs)
+    {
+        if (_observers.Contains(obs))
+            _observers.Remove(obs);
+    }
 }
