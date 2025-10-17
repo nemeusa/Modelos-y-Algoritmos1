@@ -1,0 +1,5 @@
+IDBPlay > Play :
+IDBExit > Exit :
+IDBCredits > Credits :
+IDBBack > Back : 
+IDBLevel1 > Level 1 :

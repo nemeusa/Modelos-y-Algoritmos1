@@ -1,0 +1,5 @@
+IDBPlay > Jugar :
+IDBExit > Salir : 
+IDBCredits > Creditos :
+IDBBack > Atras :
+IDBLevel1 > Nivel 1 :
