@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using TMPro;
 
 public class PlayerMemen : MonoBehaviour, IRewind
 {
@@ -12,6 +13,8 @@ public class PlayerMemen : MonoBehaviour, IRewind
     public float life;
     public int gold;
 
+    [SerializeField] TMP_Text _goldText, _lifeText;
+
     MementoState _mementoState;
 
     private void Awake()
@@ -21,6 +24,8 @@ public class PlayerMemen : MonoBehaviour, IRewind
     }
     private void Update()
     {
+        _goldText.text = "oro: " + gold;
+        _lifeText.text = "vida: " + life;
         Flip();
         
         if (Input.GetKeyDown(KeyCode.Space))

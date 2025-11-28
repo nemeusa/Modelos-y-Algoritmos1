@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Credits.unity
     guid: 88a137e1056e4f045bd397fd240f8bfd
+  - enabled: 1
+    path: Assets/Scenes/MementoTest.unity
+    guid: 8e352d552c9779a42a5856b13796bbe9
   m_configObjects: {}

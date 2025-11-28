@@ -3,3 +3,7 @@ IDBExit > Salir :
 IDBCredits > Creditos :
 IDBBack > Atras :
 IDBLevel1 > Nivel 1 :
+IDBMementoPlay > Jugar memento :
+IDBChangeLang > cambiar idioma=
+ingles= tecla 1
+espanol= tecla 2

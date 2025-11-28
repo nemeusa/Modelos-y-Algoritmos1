@@ -3,3 +3,7 @@ IDBExit > Exit :
 IDBCredits > Credits :
 IDBBack > Back : 
 IDBLevel1 > Level 1 :
+IDBMementoPlay > Play memento :
+IDBChangeLang > Change language=
+English= Press 1
+Spanish= Press 2 :
